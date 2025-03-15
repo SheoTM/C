@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "ex2.h"
 
-int main() {
+void run_ex2() {
     int n;
     printf("Enter the number of rows\n");
     scanf("%d", &n);
@@ -24,5 +25,4 @@ int main() {
     }
 
     free(factorial);
-    return 0;
 }

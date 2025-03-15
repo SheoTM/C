@@ -1,26 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "ex3.h"
 
-int main(void) {
+void run_ex3() {
     int rows, cols;
 
     printf("Row: ");
     if (scanf("%d", &rows) != 1 || rows <= 0) {
         printf("Row must be over 0\n");
-        return 1;
+        return;
     }
 
     printf("Column: ");
     if (scanf("%d", &cols) != 1 || cols <= 0) {
         printf("Column must be over 0\n");
-        return 1;
+        return;
     }
 
     int *matrix = malloc(rows * cols * sizeof(int));
     if (matrix == NULL) {
         printf("Memory allocation error\n");
-        return 1;
+        return;
     }
 
     srand(time(NULL));
@@ -40,5 +41,4 @@ int main(void) {
     }
 
     free(matrix);
-    return 0;
 }

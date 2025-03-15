@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include "ex1.h"
 
 #define MAX_CONTACTS 20
 
@@ -52,7 +53,7 @@ bool removeContactByLastName(const char *lastName) {
 // Prints all contacts
 void printAllContacts() {
     if (contactCount == 0) {
-        printf("There is no contacts\n");
+        printf("There are no contacts\n");
     } else {
         for (int i = 0; i < contactCount; i++) {
             printf("%d. %s %s, phone: %s\n",
@@ -63,27 +64,6 @@ void printAllContacts() {
         }
     }
 }
-
-int main() {
-    // Sample contacts
-    addContact("Kamil", "Pomaranczowy", "123456789");
-    addContact("Anna", "Zielony", "987654321");
-    addContact("Piotr", "Bialy", "5432167890");
-
-    // Print contacts
-    printf("Adress book:\n");
-    printAllContacts();
-    printf("\n");
-
-    // Add a new contact
-    addContact("Ziemowit", "Czarny", "547698124");
-
-    // Remove a contact
-    removeContactByLastName("Zielony");
-
-    // Print the updated
-    printf("Address book after modifications:\n");
-    printAllContacts();
 
 /*  (FUN FACT)
     The longest name in the world is Adolph Blaine Charles David Earl Frederick
@@ -102,12 +82,26 @@ int main() {
     I would never try to look him up in a telephone book by name
     */
 
+void run_ex1() {
+    // Sample contacts
+    addContact("Kamil", "Pomaranczowy", "123456789");
+    addContact("Anna", "Zielony", "987654321");
+    addContact("Piotr", "Bialy", "5432167890");
+
+    printf("Address book:\n");
+    printAllContacts();
+
+
+    addContact("Ziemowit", "Czarny", "547698124");
+    removeContactByLastName("Zielony");
+
+    printf("\nAddress book after modifications:\n");
+    printAllContacts();
 
     //Search for surname
     char surname[50];
     printf("\nEnter last name to search: ");
     scanf("%s", surname);
-
     int index = findContactByLastName(surname);
 
     if (index != -1) {
@@ -118,6 +112,4 @@ int main() {
     } else {
         printf("Contact with last name \"%s\" does not exist\n", surname);
     }
-
-    return 0;
 }
